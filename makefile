@@ -7,11 +7,11 @@ all: test-sll test-dll test-stack test-queue
 test-sll:	test-sll.o integer.o sll.o
 		gcc $(LOPTS) test-sll.o integer.o sll.o -o test-sll
 
-test-dll:	test-dll.o real.o dll.o
-		gcc $(LOPTS) test-dll.o real.o dll.o -o test-dll
+test-dll:	test-dll.o integer.o dll.o
+		gcc $(LOPTS) test-dll.o integer.o dll.o -o test-dll
 
-test-stack:	test-stack.o string.o dll.o stack.o
-		gcc $(LOPTS) test-stack.o string.o dll.o stack.o -o test-stack
+test-stack:	test-stack.o integer.o string.o dll.o stack.o
+		gcc $(LOPTS) test-stack.o integer.o string.o dll.o stack.o -o test-stack
 
 test-queue:	test-queue.o integer.o sll.o queue.o
 		gcc $(LOPTS) test-queue.o integer.o sll.o queue.o -o test-queue
@@ -19,7 +19,7 @@ test-queue:	test-queue.o integer.o sll.o queue.o
 test-sll.o:	test-sll.c sll.h integer.h
 		gcc $(OOPTS) test-sll.c
 
-test-dll.o:	test-dll.c dll.h real.h
+test-dll.o:	test-dll.c dll.h
 		gcc $(OOPTS) test-dll.c
 
 test-stack.o:	test-stack.c stack.h string.h
