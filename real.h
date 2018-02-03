@@ -13,7 +13,7 @@ typedef struct REAL REAL;
 
 extern REAL *newREAL(double);
 extern double getREAL(REAL *);
-extern double setREAL(REAL*, double);
+extern double setREAL(REAL*, double v);
 extern double compareREAL(void *, void *);
 extern void displayREAL(void *, FILE *);
 extern void freeREAL(void *);

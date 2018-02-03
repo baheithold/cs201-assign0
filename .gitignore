@@ -35,6 +35,10 @@
 *.i*86
 *.x86_64
 *.hex
+test-sll
+test-dll
+test-stack
+test-queue
 
 # Debug files
 *.dSYM/

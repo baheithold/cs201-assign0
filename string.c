@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <string.h>
 #include "string.h"
 
 struct STRING {
@@ -21,13 +22,20 @@ STRING *newSTRING(char *x) {
 }
 
 char *getSTRING(STRING *p) {
+    assert(p != 0);
     return p->value;
 }
 
 char *setSTRING(STRING *p, char *v) {
+    assert(p != 0);
     char *old = p->value;
     p->value = v;
     return old;
+}
+
+int compareSTRING(STRING *str1, STRING *str2) {
+    assert(str1 != NULL && str2 != NULL);
+    return strcmp(getSTRING(str1), getSTRING(str2));
 }
 
 void displaySTRING(void *v, FILE *fp) {

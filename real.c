@@ -21,20 +21,23 @@ REAL *newREAL(double x) {
 }
 
 double getREAL(REAL *p) {
+    assert(p != 0);
     return p->value;
 }
 
 double setREAL(REAL *p, double v) {
+    assert(p != 0);
     double old = p->value;
     p->value = v;
     return old;
 }
 
 void displayREAL(void *v, FILE *fp) {
-    fprintf(fp, "%g", getREAL((REAL *)v));
+    fprintf(fp, "%f", getREAL((REAL *)v));
 }
 
 double compareREAL(void *v, void *w) {
+    assert(v != NULL && w != NULL);
     return getREAL(v) - getREAL(w);
 }
 
