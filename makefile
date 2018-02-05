@@ -59,13 +59,13 @@ queueOBJS9 = queue-0-9.o integer.o queue.o sll.o
 
 
 # Test executables for SLL DLL QUEUE and STACK
-sllTESTS = 	test-sll sll-0-0 sll-0-1 sll-0-2 sll-0-3 sll-0-4 sll-0-5 sll-0-6 \
+sllTESTS = 	sll-0-0 sll-0-1 sll-0-2 sll-0-3 sll-0-4 sll-0-5 sll-0-6 \
 			sll-0-7 sll-0-8 sll-0-9 sll-0-10 sll-0-11 sll-0-12 sll-0-13 sll-0-14
-dllTESTS = 	test-dll dll-0-0 dll-0-1 dll-0-2 dll-0-3 dll-0-4 dll-0-5 dll-0-6 \
+dllTESTS = 	dll-0-0 dll-0-1 dll-0-2 dll-0-3 dll-0-4 dll-0-5 dll-0-6 \
 			dll-0-7 dll-0-8 dll-0-9 dll-0-10 dll-0-11 dll-0-12 dll-0-13 dll-0-14
-queueTESTS = test-queue queue-0-0 queue-0-1 queue-0-2 queue-0-3 queue-0-4 \
+queueTESTS = queue-0-0 queue-0-1 queue-0-2 queue-0-3 queue-0-4 \
 			 queue-0-5 queue-0-6 queue-0-7 queue-0-8 queue-0-9
-stackTESTS = test-stack stack-0-0 stack-0-1 stack-0-2 stack-0-3 stack-0-4 \
+stackTESTS = stack-0-0 stack-0-1 stack-0-2 stack-0-3 stack-0-4 \
 			 stack-0-5 stack-0-6 stack-0-7 stack-0-8 stack-0-9
 
 
@@ -648,18 +648,11 @@ debug:	$(sllTESTS) $(dllTESTS) $(queueTESTS) $(stackTESTS)
 		@echo Finished Debugging!
 
 valgrind:	all
-		@echo testing singly-linked list with Valgrind
-		valgrind test-sll
-		@echo
-		@echo testing doubly-linked list with Valgrind
-		valgrind test-dll
-		@echo
-		@echo testing stack with Valgrind
-		valgrind test-stack
-		@echo
-		@echo testing queue with Valgrind
-		valgrind test-queue
-		@echo
+		valgrind ./test-sll
+		valgrind ./test-dll
+		valgrind ./test-stack
+		valgrind ./test-queue
 
 clean:
-		rm -f $(sllTESTS) $(dllTESTS) $(queueTESTS) $(stackTESTS) *.o vgcore.*
+		rm -f $(sllTESTS) $(dllTESTS) $(queueTESTS) $(stackTESTS) \
+		test-sll test-dll test-queue test-stack *.o vgcore.*
