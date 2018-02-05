@@ -74,7 +74,9 @@ LOPTS = -Wall -Wextra -std=c99 -g
 
 
 # RULES
-all: $(sllTESTS) $(dllTESTS) $(queueTESTS) $(stackTESTS)
+all: test-sll test-dll test-queue test-stack
+
+debug:	$(sllTESTS) $(dllTESTS) $(queueTESTS) $(stackTESTS)
 
 test-sll:	test-sll.o integer.o sll.o
 		gcc $(LOPTS) test-sll.o integer.o sll.o -o test-sll
@@ -422,271 +424,228 @@ string.o:	string.c string.h
 		gcc $(OOPTS) string.c
 
 test:	all
-		@echo Testing singly-linked list
+		@echo Testing
 		@echo Running test-sll...
 		@./test-sll
+		@echo Running test-dll...
+		@./test-dll
+		@echo Running test-queue...
+		@./test-queue
+		@echo Running test-stack...
+		@./test-stack
+		@echo Finished Testing!
+
+debug:	$(sllTESTS) $(dllTESTS) $(queueTESTS) $(stackTESTS)
+		@echo Debugging \(NO diff output if OK\)
 		@echo
+		@echo Debugging singly-linked list
 		@echo Running sll-0-0 tester...
 		@./sll-0-0 > ./testing/sll/myResults/results-0-0
 		@diff ./testing/sll/expectedResults/results-0-0 \
 		./testing/sll/myResults/results-0-0
-		@echo
 		@echo Running sll-0-1 tester...
 		@./sll-0-1 > ./testing/sll/myResults/results-0-1
 		@diff ./testing/sll/expectedResults/results-0-1 \
 		./testing/sll/myResults/results-0-1
-		@echo
 		@echo Running sll-0-2 tester...
 		@./sll-0-2 > ./testing/sll/myResults/results-0-2
 		@diff ./testing/sll/expectedResults/results-0-2 \
 		./testing/sll/myResults/results-0-2
-		@echo
 		@echo Running sll-0-3 tester...
 		@./sll-0-3 > ./testing/sll/myResults/results-0-3
 		@diff ./testing/sll/expectedResults/results-0-3 \
 		./testing/sll/myResults/results-0-3
-		@echo
 		@echo Running sll-0-4 tester...
 		@./sll-0-4 > ./testing/sll/myResults/results-0-4
 		@diff ./testing/sll/expectedResults/results-0-4 \
 		./testing/sll/myResults/results-0-4
-		@echo
 		@echo Running sll-0-5 tester...
 		@./sll-0-5 > ./testing/sll/myResults/results-0-5
 		@diff ./testing/sll/expectedResults/results-0-5 \
 		./testing/sll/myResults/results-0-5
-		@echo
 		@echo Running sll-0-6 tester...
 		@./sll-0-6 > ./testing/sll/myResults/results-0-6
 		@diff ./testing/sll/expectedResults/results-0-6 \
 		./testing/sll/myResults/results-0-6
-		@echo
 		@echo Running sll-0-7 tester...
 		@./sll-0-7 > ./testing/sll/myResults/results-0-7
 		@diff ./testing/sll/expectedResults/results-0-7 \
 		./testing/sll/myResults/results-0-7
-		@echo
 		@echo Running sll-0-8 tester...
 		@./sll-0-8 > ./testing/sll/myResults/results-0-8
 		@diff ./testing/sll/expectedResults/results-0-8 \
 		./testing/sll/myResults/results-0-8
-		@echo
 		@echo Running sll-0-9 tester...
 		@./sll-0-9 > ./testing/sll/myResults/results-0-9
 		@diff ./testing/sll/expectedResults/results-0-9 \
 		./testing/sll/myResults/results-0-9
-		@echo
 		@echo Running sll-0-10 tester...
 		@./sll-0-10 > ./testing/sll/myResults/results-0-10
 		@diff ./testing/sll/expectedResults/results-0-10 \
 		./testing/sll/myResults/results-0-10
-		@echo
 		@echo Running sll-0-11 tester...
 		@./sll-0-11 > ./testing/sll/myResults/results-0-11
 		@diff ./testing/sll/expectedResults/results-0-11 \
 		./testing/sll/myResults/results-0-11
-		@echo
 		@echo Running sll-0-12 tester...
 		@./sll-0-12 > ./testing/sll/myResults/results-0-12
 		@diff ./testing/sll/expectedResults/results-0-12 \
 		./testing/sll/myResults/results-0-12
-		@echo
 		@echo Running sll-0-13 tester...
 		@./sll-0-13 > ./testing/sll/myResults/results-0-13
 		@diff ./testing/sll/expectedResults/results-0-13 \
 		./testing/sll/myResults/results-0-13
-		@echo
 		@echo Running sll-0-14 tester...
 		@./sll-0-14 > ./testing/sll/myResults/results-0-14
 		@diff ./testing/sll/expectedResults/results-0-14 \
 		./testing/sll/myResults/results-0-14
 		@echo
-		@echo Testing doubly-linked list
-		@echo Running test-dll...
-		@./test-dll
-		@echo
+		@echo Debugging doubly-linked list
 		@echo Running dll-0-0 tester...
 		@./dll-0-0 > ./testing/dll/myResults/results-0-0
 		@diff ./testing/dll/expectedResults/results-0-0 \
 		./testing/dll/myResults/results-0-0
-		@echo
 		@echo Running dll-0-1 tester...
 		@./dll-0-1 > ./testing/dll/myResults/results-0-1
 		@diff ./testing/dll/expectedResults/results-0-1 \
 		./testing/dll/myResults/results-0-1
-		@echo
 		@echo Running dll-0-2 tester...
 		@./dll-0-2 > ./testing/dll/myResults/results-0-2
 		@diff ./testing/dll/expectedResults/results-0-2 \
 		./testing/dll/myResults/results-0-2
-		@echo
 		@echo Running dll-0-3 tester...
 		@./dll-0-3 > ./testing/dll/myResults/results-0-3
 		@diff ./testing/dll/expectedResults/results-0-3 \
 		./testing/dll/myResults/results-0-3
-		@echo
 		@echo Running dll-0-4 tester...
 		@./dll-0-4 > ./testing/dll/myResults/results-0-4
 		@diff ./testing/dll/expectedResults/results-0-4 \
 		./testing/dll/myResults/results-0-4
-		@echo
 		@echo Running dll-0-5 tester...
 		@./dll-0-5 > ./testing/dll/myResults/results-0-5
 		@diff ./testing/dll/expectedResults/results-0-5 \
 		./testing/dll/myResults/results-0-5
-		@echo
 		@echo Running dll-0-6 tester...
 		@./dll-0-6 > ./testing/dll/myResults/results-0-6
 		@diff ./testing/dll/expectedResults/results-0-6 \
 		./testing/dll/myResults/results-0-6
-		@echo
 		@echo Running dll-0-7 tester...
 		@./dll-0-7 > ./testing/dll/myResults/results-0-7
 		@diff ./testing/dll/expectedResults/results-0-7 \
 		./testing/dll/myResults/results-0-7
-		@echo
 		@echo Running dll-0-8 tester...
 		@./dll-0-8 > ./testing/dll/myResults/results-0-8
 		@diff ./testing/dll/expectedResults/results-0-8 \
 		./testing/dll/myResults/results-0-8
-		@echo
 		@echo Running dll-0-9 tester...
 		@./dll-0-9 > ./testing/dll/myResults/results-0-9
 		@diff ./testing/dll/expectedResults/results-0-9 \
 		./testing/dll/myResults/results-0-9
-		@echo
 		@echo Running dll-0-10 tester...
 		@./dll-0-10 > ./testing/dll/myResults/results-0-10
 		@diff ./testing/dll/expectedResults/results-0-10 \
 		./testing/dll/myResults/results-0-10
-		@echo
 		@echo Running dll-0-11 tester...
 		@./dll-0-11 > ./testing/dll/myResults/results-0-11
 		@diff ./testing/dll/expectedResults/results-0-11 \
 		./testing/dll/myResults/results-0-11
-		@echo
 		@echo Running dll-0-12 tester...
 		@./dll-0-12 > ./testing/dll/myResults/results-0-12
 		@diff ./testing/dll/expectedResults/results-0-12 \
 		./testing/dll/myResults/results-0-12
-		@echo
 		@echo Running dll-0-13 tester...
 		@./dll-0-13 > ./testing/dll/myResults/results-0-13
 		@diff ./testing/dll/expectedResults/results-0-13 \
 		./testing/dll/myResults/results-0-13
-		@echo
 		@echo Running dll-0-14 tester...
 		@./dll-0-14 > ./testing/dll/myResults/results-0-14
 		@diff ./testing/dll/expectedResults/results-0-14 \
 		./testing/dll/myResults/results-0-14
 		@echo
-		@echo Testing Stack
-		@echo Running test-stack...
-		@./test-stack
-		@echo
+		@echo Debugging Stack
 		@echo Running stack-0-0 tester...
 		@./stack-0-0 > ./testing/stack/myResults/results-0-0
 		@diff ./testing/stack/expectedResults/results-0-0 \
 		./testing/stack/myResults/results-0-0
-		@echo
 		@echo Running stack-0-1 tester...
 		@./stack-0-1 > ./testing/stack/myResults/results-0-1
 		@diff ./testing/stack/expectedResults/results-0-1 \
 		./testing/stack/myResults/results-0-1
-		@echo
 		@echo Running stack-0-2 tester...
 		@./stack-0-2 > ./testing/stack/myResults/results-0-2
 		@diff ./testing/stack/expectedResults/results-0-2 \
 		./testing/stack/myResults/results-0-2
-		@echo
 		@echo Running stack-0-3 tester...
 		@./stack-0-3 > ./testing/stack/myResults/results-0-3
 		@diff ./testing/stack/expectedResults/results-0-3 \
 		./testing/stack/myResults/results-0-3
-		@echo
 		@echo Running stack-0-4 tester...
 		@./stack-0-4 > ./testing/stack/myResults/results-0-4
 		@diff ./testing/stack/expectedResults/results-0-4 \
 		./testing/stack/myResults/results-0-4
-		@echo
 		@echo Running stack-0-5 tester...
 		@./stack-0-5 > ./testing/stack/myResults/results-0-5
 		@diff ./testing/stack/expectedResults/results-0-5 \
 		./testing/stack/myResults/results-0-5
-		@echo
 		@echo Running stack-0-6 tester...
 		@./stack-0-6 > ./testing/stack/myResults/results-0-6
 		@diff ./testing/stack/expectedResults/results-0-6 \
 		./testing/stack/myResults/results-0-6
-		@echo
 		@echo Running stack-0-7 tester...
 		@./stack-0-7 > ./testing/stack/myResults/results-0-7
 		@diff ./testing/stack/expectedResults/results-0-7 \
 		./testing/stack/myResults/results-0-7
-		@echo
 		@echo Running stack-0-8 tester...
 		@./stack-0-8 > ./testing/stack/myResults/results-0-8
 		@diff ./testing/stack/expectedResults/results-0-8 \
 		./testing/stack/myResults/results-0-8
-		@echo
 		@echo Running stack-0-9 tester...
 		@./stack-0-9 > ./testing/stack/myResults/results-0-9
 		@diff ./testing/stack/expectedResults/results-0-9 \
 		./testing/stack/myResults/results-0-9
 		@echo
-		@echo Testing Queue
-		@echo Running test-queue...
-		@echo ./test-queue
-		@echo
+		@echo Debugging Queue
 		@echo Running queue-0-0 tester...
 		@./queue-0-0 > ./testing/queue/myResults/results-0-0
 		@diff ./testing/queue/expectedResults/results-0-0 \
 		./testing/queue/myResults/results-0-0
-		@echo
 		@echo Running queue-0-1 tester...
 		@./queue-0-1 > ./testing/queue/myResults/results-0-1
 		@diff ./testing/queue/expectedResults/results-0-1 \
 		./testing/queue/myResults/results-0-1
-		@echo
 		@echo Running queue-0-2 tester...
 		@./queue-0-2 > ./testing/queue/myResults/results-0-2
 		@diff ./testing/queue/expectedResults/results-0-2 \
 		./testing/queue/myResults/results-0-2
-		@echo
 		@echo Running queue-0-3 tester...
 		@./queue-0-3 > ./testing/queue/myResults/results-0-3
 		@diff ./testing/queue/expectedResults/results-0-3 \
 		./testing/queue/myResults/results-0-3
-		@echo
 		@echo Running queue-0-4 tester...
 		@./queue-0-4 > ./testing/queue/myResults/results-0-4
 		@diff ./testing/queue/expectedResults/results-0-4 \
 		./testing/queue/myResults/results-0-4
-		@echo
 		@echo Running queue-0-5 tester...
 		@./queue-0-5 > ./testing/queue/myResults/results-0-5
 		@diff ./testing/queue/expectedResults/results-0-5 \
 		./testing/queue/myResults/results-0-5
-		@echo
 		@echo Running queue-0-6 tester...
 		@./queue-0-6 > ./testing/queue/myResults/results-0-6
 		@diff ./testing/queue/expectedResults/results-0-6 \
 		./testing/queue/myResults/results-0-6
-		@echo
 		@echo Running queue-0-7 tester...
 		@./queue-0-7 > ./testing/queue/myResults/results-0-7
 		@diff ./testing/queue/expectedResults/results-0-7 \
 		./testing/queue/myResults/results-0-7
-		@echo
 		@echo Running queue-0-8 tester...
 		@./queue-0-8 > ./testing/queue/myResults/results-0-8
 		@diff ./testing/queue/expectedResults/results-0-8 \
 		./testing/queue/myResults/results-0-8
-		@echo
 		@echo Running queue-0-9 tester...
 		@./queue-0-9 > ./testing/queue/myResults/results-0-9
 		@diff ./testing/queue/expectedResults/results-0-9 \
 		./testing/queue/myResults/results-0-9
+		@echo Finished Debugging!
 
 valgrind:	all
 		@echo testing singly-linked list with Valgrind
